@@ -7,7 +7,7 @@ In this experiment, we used six data sets of MNIST, CIFAR10, CIFAR100, TEXAS, LO
 ![image](figs/dataset.png)
 ## Run
 ### Train shadow model
-We first need to train a shadow model that simulates the behavior and output of the target model.
+We first need to train a shadow model that simulates the behavior and output of the target model.The same shadow model data can be reused for different protections, so you only need to train once. It is usually recommended to train more than 10 shadow models, and this parameter can be adjusted using shadow_num (default is 10).
 ```
 python train_shadow.py --dataset CIFAR100 --epochs 100
 ```
