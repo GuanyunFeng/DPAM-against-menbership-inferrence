@@ -12,12 +12,12 @@ We first need to train a shadow model that simulates the behavior and output of 
 python train_shadow.py --dataset CIFAR100 --epochs 100
 ```
 ### Train target model
-Then we need to train the target model, which plays the role of victim in our experiment, and its dataset is divided according to the table above.
+Then we need to train the target model, which plays the role of victim in our experiment, and its dataset is divided according to the table above. When training, you need to specify the division of the dataset in the parameters, and we recommend that you divide the data according to the method in the readme table. In addition, you can specify the defense method, and the optional parameters are (None, GAN, DPSGD, OUR). GAN uses adversarial regularization, DPSGD uses differential privacy, and OUR is our method of defense (DPAM). Alternatively, you can use the parameter to adjust the weight of the regularizer in the loss.
 ```
 python train_target.py --dataset CIFAR100 --epochs 100 --defense None --train_size 40000 --valid_size 10000 --attack_size 10000
 ```
 ### Implement inference
-After completing the above two steps, you can use a dichotomous model to perform inference. You can experiment with any model in sklearn.
+After completing the above two steps, you can use a dichotomous model to perform inference. You can experiment with any model in sklearn.Note that you also need to specify the defense method and parameters during the attack, in order to find where the data is stored.
 ```
 python attack.apy --dataset CIFAR100 --defense None
 ```
